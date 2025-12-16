@@ -53,7 +53,7 @@ export function SignupScreen({ onSignup, onNavigateToLogin, onNavigateBack }: Si
               <h1 className="text-4xl font-black text-gray-900 mb-3 tracking-tight leading-none">
                 Crie sua<br/>conta
               </h1>
-              <p className="text-gray-500 font-medium text-lg">Comece sua jornada na SMOVA.</p>
+              <p className="text-gray-500 font-medium text-lg">Comece sua jornada na SEMOV.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">

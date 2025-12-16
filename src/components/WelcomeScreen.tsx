@@ -11,34 +11,43 @@ export function WelcomeScreen({ onLogin, onSignup }: WelcomeScreenProps) {
     onLogin();
   };
 
+  const handleStravaLogin = () => {
+    // Mock Strava Login
+    onLogin();
+  };
+
   return (
     <div className="w-full h-full bg-white overflow-hidden flex items-center justify-center">
       <div className="w-full h-full max-w-md mx-auto relative flex flex-col">
         {/* Content Container - Centered vertically and horizontally */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-safe pb-safe gap-10">
+        <div className="relative z-10 flex-1 flex flex-col justify-between px-6 pt-safe pb-safe">
           
-          {/* Brand Identity */}
-          <div className="w-full flex flex-col items-center justify-center py-12">
-            <div className="relative">
-              {/* Subtle ambient glow behind the logo */}
-              <div className="absolute inset-0 bg-[#E53935] blur-3xl opacity-10 rounded-full scale-150"></div>
-              <SmovaLogo variant="full" className="h-20 sm:h-24 text-gray-900 relative z-10" />
+          {/* Brand Identity & Content - Centered in the upper space */}
+          <div className="flex-1 flex flex-col items-center justify-center w-full">
+            <div className="w-full flex flex-col items-center justify-center py-8">
+              <div className="relative">
+                {/* Subtle ambient glow behind the logo */}
+                <div className="absolute inset-0 bg-[#E53935] blur-3xl opacity-10 rounded-full scale-150"></div>
+                {/* Using a large text size to ensure visibility */}
+                <SmovaLogo variant="full" className="text-6xl text-gray-900 relative z-10" />
+              </div>
+            </div>
+            
+            {/* Text Content - Perfectly centered */}
+            <div className="w-full flex flex-col items-center space-y-4 mt-8">
+              <h2 className="text-2xl text-[#121212] text-center leading-tight font-bold whitespace-nowrap px-2">
+                Construa sua evolução do zero
+              </h2>
+              
+              <p className="text-base sm:text-lg text-[#676767] text-center leading-relaxed max-w-xs mx-auto font-medium">
+                A comunidade de corrida mais completa para quem corre com propósito.
+              </p>
             </div>
           </div>
           
-          {/* Text Content - Perfectly centered */}
-          <div className="w-full flex flex-col items-center space-y-4">
-            <h2 className="text-2xl text-[#121212] text-center leading-tight font-bold whitespace-nowrap px-2">
-              Construa sua evolução do zero
-            </h2>
-            
-            <p className="text-base sm:text-lg text-[#676767] text-center leading-relaxed max-w-xs mx-auto font-medium">
-              A comunidade de corrida mais completa para quem corre com propósito.
-            </p>
-          </div>
-          
-          {/* Action Buttons */}
-          <div className="w-full space-y-3 mt-4">
+          {/* Action Buttons - Pushed to bottom but floating */}
+          <div className="w-full space-y-3 mt-8 mb-4">
+            {/* Google Login */}
             <button 
               onClick={handleGoogleLogin}
               className="w-full bg-white border border-gray-200 rounded-2xl py-4 shadow-sm hover:bg-gray-50 transition-all active:scale-[0.98] touch-manipulation flex items-center justify-center gap-3 group"
@@ -64,6 +73,19 @@ export function WelcomeScreen({ onLogin, onSignup }: WelcomeScreenProps) {
               <span className="text-gray-700 font-bold text-base">Entrar com Google</span>
             </button>
 
+            {/* Strava Login */}
+            <button 
+              onClick={handleStravaLogin}
+              className="w-full bg-white border border-gray-200 rounded-2xl py-4 shadow-sm hover:bg-gray-50 transition-all active:scale-[0.98] touch-manipulation flex items-center justify-center gap-3 group"
+            >
+              {/* Adjusted Strava Icon: Using a simplified, cleaner path centered in 24x24 viewBox */}
+              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.387 17.944L13.298 13.828H10.233L15.387 24L20.537 13.828H17.471L15.387 17.944ZM8.379 12.345L11.215 17.943H15.387L10.477 8.24902H10.475L4.533 19.479H8.705L12.551 12.345H8.379Z" fill="#FC4C02"/>
+              </svg>
+              <span className="text-gray-700 font-bold text-base">Entrar com Strava</span>
+            </button>
+
+            {/* Email Login - Primary */}
             <button 
               onClick={onLogin}
               className="w-full bg-gradient-to-r from-[#E53935] to-[#B71C1C] rounded-2xl py-4 shadow-lg shadow-[#E53935]/20 hover:shadow-xl hover:shadow-red-500/30 transition-all active:scale-[0.98] touch-manipulation"

@@ -398,16 +398,16 @@ export function AnamneseScreen({
         </div>
       </div>
 
-      {/* Fixed Footer */}
-      <div className="w-full bg-white border-t border-gray-100 p-5 pb-safe flex-shrink-0 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-20">
-        <div className="max-w-md mx-auto w-full">
+      {/* Fixed Footer - Floating Effect */}
+      <div className="w-full bg-white/80 backdrop-blur-xl border-t border-gray-100 p-6 pb-safe flex-shrink-0 z-20">
+        <div className="max-w-md mx-auto w-full mb-2">
           <button
             onClick={handleNext}
             disabled={!canProceed()}
-            className={`w-full py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all font-medium touch-manipulation text-sm sm:text-base ${
+            className={`w-full py-4 rounded-2xl flex items-center justify-center gap-2 transition-all font-bold touch-manipulation text-base shadow-lg ${
               canProceed()
-                ? "bg-gradient-to-r from-[#E53935] to-[#B71C1C] text-white shadow-md shadow-[#E53935]/20 active:scale-[0.98]"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                ? "bg-gradient-to-r from-[#E53935] to-[#B71C1C] text-white shadow-[#E53935]/25 hover:shadow-red-500/40 active:scale-[0.98] hover:-translate-y-0.5"
+                : "bg-gray-100 text-gray-400 cursor-not-allowed shadow-gray-200/50"
             }`}
           >
             <span>
@@ -415,7 +415,7 @@ export function AnamneseScreen({
                 ? "Concluir Anamnese"
                 : "Próximo"}
             </span>
-            <ChevronRight size={16} />
+            <ChevronRight size={18} strokeWidth={2.5} />
           </button>
         </div>
       </div>

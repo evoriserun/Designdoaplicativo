@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { AlertTriangle, CheckCircle, Shield } from 'lucide-react';
+import { CheckCircle, Shield } from 'lucide-react';
 
 interface TermsScreenProps {
   onAccept: () => void;
@@ -38,17 +38,7 @@ export function TermsScreen({ onAccept }: TermsScreenProps) {
           </div>
 
           <div className="p-5 space-y-5 flex-grow pb-10">
-            {/* Warning Alert */}
-            <div className="bg-red-50 border border-red-100 rounded-2xl p-4 flex gap-3 shadow-sm">
-              <AlertTriangle className="text-[#E53935] flex-shrink-0 mt-0.5" size={22} />
-              <div>
-                <h3 className="text-gray-900 font-bold mb-1 text-sm">Atenção: Condições de Saúde</h3>
-                <p className="text-gray-700 text-sm leading-relaxed font-medium">
-                  Este aplicativo oferece treinos e atividades físicas que podem apresentar riscos à saúde.
-                </p>
-              </div>
-            </div>
-
+            
             {/* Terms Content */}
             <div className="bg-white border border-gray-200 rounded-2xl p-5 space-y-4 shadow-sm">
               <h3 className="text-gray-900 font-bold text-base">Riscos e Responsabilidades</h3>
@@ -76,7 +66,7 @@ export function TermsScreen({ onAccept }: TermsScreenProps) {
                 </ul>
                 
                 <p>
-                  <strong className="text-gray-900">4. Limitação de Responsabilidade:</strong> O SMOVA e seus desenvolvedores não se responsabilizam por lesões, danos ou problemas de saúde decorrentes do uso inadequado do aplicativo ou da não observância de suas condições médicas.
+                  <strong className="text-gray-900">4. Limitação de Responsabilidade:</strong> O SEMOV e seus desenvolvedores não se responsabilizam por lesões, danos ou problemas de saúde decorrentes do uso inadequado do aplicativo ou da não observância de suas condições médicas.
                 </p>
                 
                 <p>
@@ -90,17 +80,6 @@ export function TermsScreen({ onAccept }: TermsScreenProps) {
                   <li>Utilize equipamentos adequados</li>
                 </ul>
               </div>
-            </div>
-
-            {/* Important Notice */}
-            <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 shadow-sm">
-              <h3 className="text-gray-900 font-bold mb-1.5 flex items-center gap-2 text-sm">
-                <AlertTriangle className="text-[#FFB300]" size={18} />
-                Importante
-              </h3>
-              <p className="text-gray-700 text-sm leading-relaxed font-medium">
-                O SMOVA oferece planos de treino baseados em suas informações, mas não substitui orientação médica ou de profissionais de educação física qualificados. Em caso de dúvida, consulte um profissional de saúde.
-              </p>
             </div>
 
             {/* Checkbox Agreement */}
@@ -119,7 +98,7 @@ export function TermsScreen({ onAccept }: TermsScreenProps) {
                   </div>
                 </div>
                 <span className="text-gray-600 text-sm leading-relaxed font-medium">
-                  <strong className="text-gray-900">Li e concordo</strong> com todos os termos apresentados acima. Confirmo que estou ciente dos riscos e assumo total responsabilidade pela prática dos treinos propostos pelo SMOVA.
+                  <strong className="text-gray-900">Li e concordo</strong> com todos os termos apresentados acima. Confirmo que estou ciente dos riscos e assumo total responsabilidade pela prática dos treinos propostos pelo SEMOV.
                 </span>
               </div>
             </div>
@@ -140,7 +119,7 @@ export function TermsScreen({ onAccept }: TermsScreenProps) {
             }`}
           >
             {agreed && <CheckCircle size={20} />}
-            <span>Prosseguir para o SMOVA</span>
+            <span>Prosseguir para o SEMOV</span>
           </button>
           
           {!agreed && (

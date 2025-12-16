@@ -98,7 +98,7 @@ export function TrainingScreen({
       <div className="flex-1 overflow-y-auto pb-28 no-scrollbar">
         {/* Header */}
         <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-20">
-          <div className="p-5">
+          <div className="p-5 pt-safe">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <button
@@ -111,7 +111,7 @@ export function TrainingScreen({
                   Treinamento
                 </h1>
               </div>
-              <div className="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center border border-red-100">
+              <div className="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center border border-red-100 shadow-sm">
                 <Dumbbell
                   className="text-[#E53935]"
                   size={20}
@@ -120,10 +120,10 @@ export function TrainingScreen({
             </div>
 
             {/* Tab Navigation */}
-            <div className="flex gap-1 bg-gray-100 p-1.5 rounded-2xl">
+            <div className="flex gap-1 bg-gray-100/80 p-1.5 rounded-2xl">
               {[
                 { id: "plan", label: "Plano Semanal" },
-                { id: "coach", label: "Coach IA" },
+                { id: "coach", label: "Análise IA" }, // Renamed from Coach IA
                 { id: "history", label: "Histórico" },
               ].map((tab) => (
                 <button
@@ -131,7 +131,7 @@ export function TrainingScreen({
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex-1 py-2.5 px-3 rounded-xl transition-all text-xs font-bold touch-manipulation ${
                     activeTab === tab.id
-                      ? "bg-white text-gray-900 shadow-sm"
+                      ? "bg-white text-gray-900 shadow-sm ring-1 ring-black/5"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
@@ -147,7 +147,7 @@ export function TrainingScreen({
           <div className="p-5 space-y-6">
             {/* Today's Workout Highlight */}
             {currentWorkout && (
-              <div className="bg-gradient-to-br from-[#E53935] to-[#C62828] rounded-3xl p-6 text-white shadow-lg shadow-red-500/20 relative overflow-hidden group">
+              <div className="bg-gradient-to-br from-[#E53935] to-[#C62828] rounded-3xl p-6 text-white shadow-lg shadow-red-500/20 relative overflow-hidden group border border-white/10">
                 {/* Decorative circles */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-xl"></div>
@@ -163,7 +163,7 @@ export function TrainingScreen({
                         Treino de Hoje
                       </p>
                     </div>
-                    <h3 className="text-2xl font-bold mb-1 truncate">
+                    <h3 className="text-2xl font-bold mb-1 truncate tracking-tight">
                       {currentWorkout.workout}
                     </h3>
                     <p className="text-white/80 text-sm font-medium">
@@ -214,7 +214,7 @@ export function TrainingScreen({
             <div className="space-y-3">
               <div className="flex items-center gap-2 mb-1">
                 <Calendar size={16} className="text-gray-400" />
-                <h3 className="text-gray-900 font-bold text-sm">
+                <h3 className="text-gray-900 font-bold text-sm tracking-tight">
                   Semana Completa
                 </h3>
               </div>
@@ -226,15 +226,15 @@ export function TrainingScreen({
                     workout.current
                       ? "border-[#E53935] shadow-md shadow-red-500/5 ring-1 ring-[#E53935]/20"
                       : workout.completed
-                        ? "border-green-100 bg-green-50/30"
-                        : "border-gray-100"
+                        ? "border-green-100 bg-green-50/20"
+                        : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
                   }`}
                 >
                   <div className="flex items-start gap-4">
                     <div className="mt-1 flex-shrink-0">
                       {workout.completed ? (
                         <CheckCircle
-                          className="text-green-500"
+                          className="text-green-500 fill-green-500/20"
                           size={20}
                         />
                       ) : workout.current ? (
@@ -247,7 +247,7 @@ export function TrainingScreen({
                         </div>
                       ) : (
                         <Circle
-                          className="text-gray-300"
+                          className="text-gray-200"
                           size={20}
                         />
                       )}
@@ -257,7 +257,7 @@ export function TrainingScreen({
                       <div className="flex items-start justify-between mb-1 gap-2">
                         <div className="flex-1 min-w-0">
                           <p
-                            className={`text-sm font-bold truncate ${workout.current ? "text-[#E53935]" : "text-gray-900"}`}
+                            className={`text-sm font-bold truncate tracking-tight ${workout.current ? "text-[#E53935]" : "text-gray-900"}`}
                           >
                             {workout.workout}
                           </p>
@@ -266,7 +266,7 @@ export function TrainingScreen({
                           </p>
                         </div>
                         {workout.completed && (
-                          <span className="text-green-700 text-[10px] font-bold bg-green-100 px-2 py-1 rounded-full uppercase tracking-wide flex-shrink-0">
+                          <span className="text-green-700 text-[10px] font-bold bg-green-100 px-2 py-1 rounded-full uppercase tracking-wide flex-shrink-0 border border-green-200">
                             Concluído
                           </span>
                         )}
@@ -287,7 +287,7 @@ export function TrainingScreen({
                       {/* Botão de ação */}
                       {!workout.completed &&
                         workout.distance !== "-" && (
-                          <button className="w-full mt-3 bg-gray-900 text-white py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 hover:bg-black transition-all font-semibold shadow-sm touch-manipulation active:scale-[0.98] text-xs">
+                          <button className="w-full mt-3 bg-gray-900 text-white py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:bg-black transition-all font-bold shadow-sm touch-manipulation active:scale-[0.98] text-xs">
                             <Play
                               size={12}
                               fill="currentColor"
@@ -303,42 +303,40 @@ export function TrainingScreen({
           </div>
         )}
 
-        {/* Coach IA Tab */}
+        {/* Análise IA Tab (Formerly Coach IA) */}
         {activeTab === "coach" && (
           <div className="p-5 space-y-6">
             {/* AI Assistant Header */}
-            <div className="bg-gradient-to-br from-amber-400 to-amber-600 rounded-3xl p-6 text-white shadow-lg shadow-amber-500/20">
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-6 text-white shadow-lg shadow-gray-900/20 border border-gray-700">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 shadow-inner">
                   <Brain className="text-white" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg">
-                    Coach EVORISE
+                  <h3 className="font-bold text-lg tracking-tight">
+                    Análise IA
                   </h3>
-                  <p className="text-white/90 text-sm font-medium">
-                    Assistente Inteligente
+                  <p className="text-white/60 text-sm font-medium">
+                    Insights de Performance
                   </p>
                 </div>
               </div>
-              <div className="bg-black/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-                <p className="text-white text-sm leading-relaxed font-medium">
-                  "Bom dia, Lucas! Você está mantendo um ótimo
-                  ritmo. Hoje é dia de treino intervalado -
-                  vamos alcançar novos patamares! 💪"
+              <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
+                <p className="text-white/90 text-sm leading-relaxed font-medium">
+                  "Bom dia, Lucas! Seus dados indicam uma melhora na cadência. Mantenha o ritmo no treino intervalado de hoje para consolidar o ganho! 🚀"
                 </p>
               </div>
             </div>
 
             {/* AI Insights */}
             <div className="space-y-3">
-              <h3 className="text-gray-900 text-sm font-bold">
-                Análise Inteligente
+              <h3 className="text-gray-900 text-sm font-bold tracking-tight">
+                Métricas Principais
               </h3>
 
               <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center flex-shrink-0 border border-red-100">
                     <Target
                       className="text-[#E53935]"
                       size={20}
@@ -348,8 +346,8 @@ export function TrainingScreen({
                     <p className="text-gray-900 text-sm font-bold mb-1">
                       Meta da Semana
                     </p>
-                    <p className="text-gray-500 text-xs leading-relaxed">
-                      Você está a apenas 1 treino de completar
+                    <p className="text-gray-500 text-xs leading-relaxed font-medium">
+                      Você está a apenas <span className="text-gray-900 font-bold">1 treino</span> de completar
                       sua meta semanal. Mantenha o foco!
                     </p>
                   </div>
@@ -358,7 +356,7 @@ export function TrainingScreen({
 
               <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0 border border-green-100">
                     <TrendingUp
                       className="text-green-600"
                       size={20}
@@ -368,8 +366,8 @@ export function TrainingScreen({
                     <p className="text-gray-900 text-sm font-bold mb-1">
                       Evolução de Pace
                     </p>
-                    <p className="text-gray-500 text-xs leading-relaxed">
-                      Seu pace médio melhorou 15s/km nas últimas
+                    <p className="text-gray-500 text-xs leading-relaxed font-medium">
+                      Seu pace médio melhorou <span className="text-green-600 font-bold">15s/km</span> nas últimas
                       2 semanas. Excelente progresso!
                     </p>
                   </div>
@@ -378,7 +376,7 @@ export function TrainingScreen({
 
               <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center flex-shrink-0 border border-amber-100">
                     <Award
                       className="text-[#FFB300]"
                       size={20}
@@ -388,7 +386,7 @@ export function TrainingScreen({
                     <p className="text-gray-900 text-sm font-bold mb-1">
                       Próximo Desafio
                     </p>
-                    <p className="text-gray-500 text-xs leading-relaxed">
+                    <p className="text-gray-500 text-xs leading-relaxed font-medium">
                       Complete mais 2 treinos para desbloquear o
                       badge "Consistência de Ouro"!
                     </p>
@@ -399,21 +397,21 @@ export function TrainingScreen({
 
             {/* AI Commands */}
             <div className="space-y-3">
-              <h3 className="text-gray-900 text-sm font-bold">
-                Comandos Rápidos
+              <h3 className="text-gray-900 text-sm font-bold tracking-tight">
+                Ações Recomendadas
               </h3>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  "Ajustar Pace",
-                  "Ver Análise",
+                  "Ajustar Zonas",
+                  "Análise Biomecânica",
                   "Nova Meta",
-                  "Reagendar",
+                  "Recuperação",
                 ].map((cmd, i) => (
                   <button
                     key={i}
-                    className="bg-white border border-gray-100 rounded-2xl p-4 hover:border-gray-300 transition-all text-left touch-manipulation active:scale-[0.98] hover:shadow-md"
+                    className="bg-white border border-gray-100 rounded-2xl p-4 hover:border-gray-300 transition-all text-left touch-manipulation active:scale-[0.98] hover:shadow-md group"
                   >
-                    <p className="text-gray-900 text-sm font-bold">
+                    <p className="text-gray-900 text-sm font-bold group-hover:text-[#E53935] transition-colors">
                       {cmd}
                     </p>
                     <p className="text-gray-400 text-xs mt-1 font-medium">
@@ -437,7 +435,7 @@ export function TrainingScreen({
                     size={20}
                   />
                 </div>
-                <h3 className="text-gray-900 font-bold">
+                <h3 className="text-gray-900 font-bold tracking-tight">
                   Resumo Mensal
                 </h3>
               </div>
@@ -474,7 +472,7 @@ export function TrainingScreen({
                   <span className="text-gray-600">
                     Progresso da Meta
                   </span>
-                  <span className="text-[#E53935]">75%</span>
+                  <span className="text-[#E53935] font-bold">75%</span>
                 </div>
                 <div className="h-2.5 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-full bg-gradient-to-r from-[#E53935] to-[#FFB300] w-3/4 rounded-full"></div>
@@ -484,7 +482,7 @@ export function TrainingScreen({
 
             {/* Recent Workouts */}
             <div className="space-y-3">
-              <h3 className="text-gray-900 text-sm font-bold">
+              <h3 className="text-gray-900 text-sm font-bold tracking-tight">
                 Treinos Recentes
               </h3>
 
@@ -513,11 +511,11 @@ export function TrainingScreen({
               ].map((workout, index) => (
                 <div
                   key={index}
-                  className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all"
+                  className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all group"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <p className="text-gray-900 text-sm font-bold">
+                      <p className="text-gray-900 text-sm font-bold group-hover:text-[#E53935] transition-colors">
                         {workout.workout}
                       </p>
                       <p className="text-gray-400 text-xs font-medium">
@@ -525,7 +523,7 @@ export function TrainingScreen({
                       </p>
                     </div>
                     <CheckCircle
-                      className="text-green-500"
+                      className="text-green-500 fill-green-50"
                       size={20}
                     />
                   </div>

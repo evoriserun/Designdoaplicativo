@@ -123,9 +123,9 @@ export function LessonsScreen({
     const progressPercentage = ((currentSegment + 1) / 3) * 100;
     
     return (
-      <div className="w-full h-full bg-white flex flex-col z-50 fixed inset-0">
+      <div className="w-full h-full bg-white flex flex-col z-[100] fixed inset-0">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-100 bg-white">
+        <div className="flex items-center justify-between p-4 pt-safe border-b border-gray-100 bg-white">
           <button 
             onClick={handleBack}
             className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 active:scale-95 transition-transform"
@@ -173,7 +173,7 @@ export function LessonsScreen({
         </div>
 
         {/* Lesson Content & Progress */}
-        <div className="flex-1 overflow-y-auto bg-white p-6">
+        <div className="flex-1 overflow-y-auto bg-white p-6 pb-safe">
           <div className="mb-8">
             <h1 className="text-2xl font-bold text-gray-900 mb-2">{activeLesson.title}</h1>
             <p className="text-gray-500 text-sm leading-relaxed">
@@ -281,7 +281,7 @@ export function LessonsScreen({
 
   return (
     <div className="w-full h-full bg-white overflow-hidden flex flex-col">
-      <div className="flex-1 overflow-y-auto pb-28 no-scrollbar">
+      <div className="flex-1 overflow-y-auto pb-32 no-scrollbar">
         {/* Header */}
         <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100 p-5 sticky top-0 z-20">
           <div className="flex items-center justify-between">
