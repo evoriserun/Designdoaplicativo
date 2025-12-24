@@ -32,6 +32,27 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [currentScreen]);
 
+  // Remove "Skip to main content" link safely
+  useEffect(() => {
+    const hideSkipLink = () => {
+      // Only target anchor tags which are the standard for skip links
+      const links = document.querySelectorAll('a');
+      links.forEach(el => {
+        if (el.textContent && el.textContent.trim().toLowerCase() === 'skip to main content') {
+          el.style.display = 'none';
+          el.style.visibility = 'hidden';
+          el.style.position = 'absolute';
+          el.style.top = '-9999px';
+        }
+      });
+    };
+    
+    hideSkipLink();
+    // Check shortly after load
+    const timer = setTimeout(hideSkipLink, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   const navigateTo = (screen: Screen) => {
     setNavigationHistory(prev => [...prev, screen]);
     setCurrentScreen(screen);

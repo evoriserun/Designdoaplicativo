@@ -1,4 +1,5 @@
 import { FileText, Zap, Lock, Check, ChevronRight } from "lucide-react";
+import { motion } from "motion/react";
 
 interface OnboardingHubScreenProps {
   onStartAnamnese: () => void;
@@ -52,10 +53,15 @@ export function OnboardingHubScreen({
                 </p>
                 
                 {isAnamneseCompleted ? (
-                  <div className="flex items-center gap-2 text-green-400 text-sm font-bold bg-green-400/10 px-3 py-1.5 rounded-lg w-fit">
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9, x: -10 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.8 }}
+                    className="flex items-center gap-2 text-green-400 text-sm font-bold bg-green-400/10 px-3 py-1.5 rounded-lg w-fit"
+                  >
                     <Check size={14} />
                     Concluído
-                  </div>
+                  </motion.div>
                 ) : (
                   <button
                     onClick={onStartAnamnese}
@@ -69,9 +75,14 @@ export function OnboardingHubScreen({
             </div>
 
             {/* Vertical Connector Line */}
-            <div className={`absolute left-5 top-10 bottom-[-40px] w-0.5 z-10 ${
-               isAnamneseCompleted ? "bg-green-500" : "bg-gray-700"
-            }`}></div>
+            <div className="absolute left-5 top-10 bottom-[-40px] w-0.5 z-10 bg-gray-700 rounded-full overflow-hidden">
+                <motion.div 
+                  initial={{ height: "0%" }}
+                  animate={{ height: isAnamneseCompleted ? "100%" : "0%" }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  className="w-full bg-green-500 absolute top-0 left-0"
+                />
+            </div>
           </div>
 
           {/* Step 2: Speed Test */}

@@ -1,4 +1,4 @@
-import { SmovaLogo } from './SmovaLogo';
+import { SemovLogo } from './SemovLogo';
 
 interface WelcomeScreenProps {
   onLogin: () => void;
@@ -25,32 +25,27 @@ export function WelcomeScreen({ onLogin, onSignup }: WelcomeScreenProps) {
           {/* Brand Identity & Content - Centered in the upper space */}
           <div className="flex-1 flex flex-col items-center justify-center w-full">
             <div className="w-full flex flex-col items-center justify-center py-8">
-              <div className="relative">
-                {/* Subtle ambient glow behind the logo */}
-                <div className="absolute inset-0 bg-[#E53935] blur-3xl opacity-10 rounded-full scale-150"></div>
-                {/* Using a large text size to ensure visibility */}
-                <SmovaLogo variant="full" className="text-6xl text-gray-900 relative z-10" />
-              </div>
+              <SemovLogo variant="full" className="h-16 w-auto" />
             </div>
             
             {/* Text Content - Perfectly centered */}
-            <div className="w-full flex flex-col items-center space-y-4 mt-8">
-              <h2 className="text-2xl text-[#121212] text-center leading-tight font-bold whitespace-nowrap px-2">
-                Construa sua evolução do zero
+            <div className="w-full flex flex-col items-center space-y-6 mt-10 animate-in slide-in-from-bottom-8 fade-in duration-1000">
+              <h2 className="text-3xl sm:text-4xl text-[#121212] text-center leading-none font-black tracking-tighter whitespace-nowrap px-2">
+                Construa sua<br/>evolução do zero
               </h2>
               
-              <p className="text-base sm:text-lg text-[#676767] text-center leading-relaxed max-w-xs mx-auto font-medium">
+              <p className="text-base sm:text-lg text-gray-500 text-center leading-relaxed max-w-xs mx-auto font-medium">
                 A comunidade de corrida mais completa para quem corre com propósito.
               </p>
             </div>
           </div>
           
           {/* Action Buttons - Pushed to bottom but floating */}
-          <div className="w-full space-y-3 mt-8 mb-4">
+          <div className="w-full space-y-3 mt-8 mb-6 animate-in slide-in-from-bottom-4 fade-in duration-1000 delay-200">
             {/* Google Login */}
             <button 
               onClick={handleGoogleLogin}
-              className="w-full bg-white border border-gray-200 rounded-2xl py-4 shadow-sm hover:bg-gray-50 transition-all active:scale-[0.98] touch-manipulation flex items-center justify-center gap-3 group"
+              className="w-full bg-white border border-gray-200/80 rounded-2xl py-4 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:bg-gray-50 hover:border-gray-300 transition-all active:scale-[0.98] touch-manipulation flex items-center justify-center gap-3 group"
             >
               <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
                 <path

@@ -195,26 +195,26 @@ export function RankingScreen({
 
       {/* Fixed Current User Row - Only if unlocked */}
       {!currentCategory.locked && (
-        <div className="absolute bottom-[85px] left-0 right-0 z-30 px-5">
-           <div className="bg-white border-t border-b border-gray-200 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] rounded-2xl p-4 flex items-center gap-4 border-2 border-[#E53935] ring-2 ring-[#E53935]/10 mx-auto max-w-md relative">
+        <div className="absolute bottom-[80px] left-0 right-0 z-30 px-5 pb-2">
+           <div className="bg-white border border-[#E53935] rounded-2xl p-4 flex items-center gap-4 shadow-[0_8px_24px_rgba(229,57,53,0.15)] w-full relative">
               {/* Position */}
-              <div className="flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm bg-gray-100 text-gray-500">
+              <div className="flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm bg-red-50 text-[#E53935]">
                 {myUser.position}
               </div>
 
               {/* Avatar */}
-              <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-sm bg-gradient-to-br from-[#E53935] to-[#B71C1C]">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-sm bg-gradient-to-br from-[#E53935] to-[#C62828]">
                 {myUser.avatar}
               </div>
 
               {/* Info */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="text-sm font-bold truncate text-[#E53935]">
+                  <p className="text-sm font-bold truncate text-gray-900">
                     {myUser.name}
                   </p>
-                  <span className="bg-red-100 text-red-700 text-[10px] px-1.5 py-0.5 rounded font-bold">
-                    VOCÊ
+                  <span className="bg-red-50 text-[#E53935] text-[9px] px-1.5 py-0.5 rounded font-bold border border-red-100 uppercase tracking-wide">
+                    Você
                   </span>
                 </div>
                 <p className="text-gray-400 text-xs font-medium">
@@ -224,12 +224,12 @@ export function RankingScreen({
 
               {/* Points */}
               <div className="text-right">
-                <p className="text-gray-900 text-sm font-bold">
+                <p className="text-gray-900 text-sm font-black tracking-tight">
                   {myUser.points}
                 </p>
                 <div className="flex items-center justify-end gap-1">
-                   <TrendingUp size={10} className="text-green-500" />
-                   <p className="text-gray-400 text-[10px] font-medium uppercase">pts</p>
+                   <TrendingUp size={12} className="text-green-500" />
+                   <p className="text-gray-400 text-[9px] font-bold uppercase">pts</p>
                 </div>
               </div>
            </div>

@@ -94,24 +94,24 @@ export function TrainingScreen({
   const currentWorkout = weekPlan.find((w) => w.current);
 
   return (
-    <div className="w-full h-full bg-white overflow-hidden flex flex-col">
+    <div className="w-full h-full bg-gray-50/50 overflow-hidden flex flex-col">
       <div className="flex-1 overflow-y-auto pb-28 no-scrollbar">
         {/* Header */}
-        <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-20">
+        <div className="bg-white/95 backdrop-blur-sm border-b border-gray-100/50 sticky top-0 z-20">
           <div className="p-5 pt-safe">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <button
                   onClick={() => onNavigate("home")}
-                  className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-900 hover:bg-gray-100 active:scale-95 transition-all border border-gray-100"
+                  className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-900 hover:bg-gray-100 active:scale-95 transition-all border border-gray-100"
                 >
                   <ChevronLeft size={20} />
                 </button>
-                <h1 className="text-2xl text-gray-900 font-bold tracking-tight">
+                <h1 className="text-xl text-gray-900 font-bold tracking-tight">
                   Treinamento
                 </h1>
               </div>
-              <div className="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center border border-red-100 shadow-sm">
+              <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center border border-red-100 shadow-sm">
                 <Dumbbell
                   className="text-[#E53935]"
                   size={20}
@@ -120,16 +120,16 @@ export function TrainingScreen({
             </div>
 
             {/* Tab Navigation */}
-            <div className="flex gap-1 bg-gray-100/80 p-1.5 rounded-2xl">
+            <div className="flex gap-1 bg-gray-100/80 p-1 rounded-xl">
               {[
                 { id: "plan", label: "Plano Semanal" },
-                { id: "coach", label: "Análise IA" }, // Renamed from Coach IA
+                { id: "coach", label: "Análise IA" }, 
                 { id: "history", label: "Histórico" },
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex-1 py-2.5 px-3 rounded-xl transition-all text-xs font-bold touch-manipulation ${
+                  className={`flex-1 py-2.5 px-3 rounded-lg transition-all text-xs font-bold touch-manipulation tracking-wide ${
                     activeTab === tab.id
                       ? "bg-white text-gray-900 shadow-sm ring-1 ring-black/5"
                       : "text-gray-500 hover:text-gray-700"
@@ -159,14 +159,14 @@ export function TrainingScreen({
                         className="text-[#FFB300] fill-[#FFB300]"
                         size={16}
                       />
-                      <p className="text-white/90 text-xs font-bold uppercase tracking-wider">
+                      <p className="text-white/90 text-[10px] font-black uppercase tracking-widest">
                         Treino de Hoje
                       </p>
                     </div>
-                    <h3 className="text-2xl font-bold mb-1 truncate tracking-tight">
+                    <h3 className="text-3xl font-black mb-1 truncate tracking-tighter">
                       {currentWorkout.workout}
                     </h3>
-                    <p className="text-white/80 text-sm font-medium">
+                    <p className="text-white/80 text-sm font-medium tracking-tight">
                       {currentWorkout.day},{" "}
                       {currentWorkout.date} Nov
                     </p>
@@ -202,9 +202,9 @@ export function TrainingScreen({
 
                 <button
                   onClick={() => onNavigate("workoutTracking")}
-                  className="w-full bg-white text-[#E53935] py-3.5 rounded-2xl flex items-center justify-center gap-2 hover:bg-gray-50 transition-all font-bold shadow-sm touch-manipulation active:scale-[0.98] relative z-10"
+                  className="w-full bg-white text-[#E53935] py-3.5 rounded-2xl flex items-center justify-center gap-2 hover:bg-gray-50 transition-all font-bold shadow-sm touch-manipulation active:scale-[0.98] relative z-10 text-xs uppercase tracking-widest"
                 >
-                  <Play size={16} fill="currentColor" />
+                  <Play size={14} fill="currentColor" />
                   Iniciar Corrida
                 </button>
               </div>
@@ -212,7 +212,7 @@ export function TrainingScreen({
 
             {/* Weekly Plan List */}
             <div className="space-y-3">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-2">
                 <Calendar size={16} className="text-gray-400" />
                 <h3 className="text-gray-900 font-bold text-sm tracking-tight">
                   Semana Completa
@@ -227,7 +227,7 @@ export function TrainingScreen({
                       ? "border-[#E53935] shadow-md shadow-red-500/5 ring-1 ring-[#E53935]/20"
                       : workout.completed
                         ? "border-green-100 bg-green-50/20"
-                        : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
+                        : "border-gray-100 hover:border-gray-200 hover:shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
                   }`}
                 >
                   <div className="flex items-start gap-4">
@@ -266,13 +266,13 @@ export function TrainingScreen({
                           </p>
                         </div>
                         {workout.completed && (
-                          <span className="text-green-700 text-[10px] font-bold bg-green-100 px-2 py-1 rounded-full uppercase tracking-wide flex-shrink-0 border border-green-200">
+                          <span className="text-green-700 text-[9px] font-bold bg-green-100 px-2 py-1 rounded-lg uppercase tracking-wide flex-shrink-0 border border-green-200">
                             Concluído
                           </span>
                         )}
                       </div>
 
-                      <div className="flex items-center gap-3 text-xs text-gray-600 mt-2 font-medium">
+                      <div className="flex items-center gap-2 text-xs text-gray-600 mt-2 font-medium">
                         <span className="bg-gray-50 px-2 py-1 rounded-md border border-gray-100">
                           {workout.distance}
                         </span>
@@ -287,9 +287,9 @@ export function TrainingScreen({
                       {/* Botão de ação */}
                       {!workout.completed &&
                         workout.distance !== "-" && (
-                          <button className="w-full mt-3 bg-gray-900 text-white py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:bg-black transition-all font-bold shadow-sm touch-manipulation active:scale-[0.98] text-xs">
+                          <button className="w-full mt-3 bg-gray-900 text-white py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:bg-black transition-all font-bold shadow-sm touch-manipulation active:scale-[0.98] text-[10px] uppercase tracking-wider">
                             <Play
-                              size={12}
+                              size={10}
                               fill="currentColor"
                             />
                             Iniciar Treino
@@ -414,8 +414,8 @@ export function TrainingScreen({
                     <p className="text-gray-900 text-sm font-bold group-hover:text-[#E53935] transition-colors">
                       {cmd}
                     </p>
-                    <p className="text-gray-400 text-xs mt-1 font-medium">
-                      Toque para iniciar
+                    <p className="text-gray-400 text-xs mt-1 font-medium uppercase tracking-wide">
+                      Iniciar
                     </p>
                   </button>
                 ))}
